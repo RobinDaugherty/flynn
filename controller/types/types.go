@@ -627,11 +627,19 @@ type Sink struct {
 	UpdatedAt   *time.Time      `json:"updated_at,omitempty"`
 }
 
+type SyslogFormat string
+
+const (
+	SyslogFormatRFC6587 SyslogFormat = "rfc6587"
+	SyslogFormatNewline SyslogFormat = "newline"
+)
+
 type SyslogSinkConfig struct {
-	URL      string `json:"url"`
-	Prefix   string `json:"template"`
-	UseIDs   bool   `json:"use_ids"`
-	Insecure bool   `json:"insecure"`
+	URL      string       `json:"url"`
+	Prefix   string       `json:"template"`
+	UseIDs   bool         `json:"use_ids"`
+	Insecure bool         `json:"insecure"`
+	Format   SyslogFormat `json:"format"`
 }
 
 type LogAggregatorSinkConfig struct {
